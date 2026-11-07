@@ -1,1 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CampusWell</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  </head>
 
+  <body>
+    <div class="app">
+      <header class="hero">
+        <h1>CampusWell</h1>
+        <p>A simple place to check in and reflect.</p>
+        <span class="badge">Student wellness demo</span>
+      </header>
+
+      <aside class="notice">
+        Educational prototype — not diagnosis, therapy, or emergency care.
+        Use fictional information.
+      </aside>
+
+      <main>
+        <section class="card" id="checkin">
+          <h2>Daily mood check-in</h2>
+
+          <label for="entry-date">Date</label>
+          <input id="entry-date" type="date" required>
+
+          <label for="mood-score">How are you feeling?</label>
+          <select id="mood-score">
+            <option value="1">1 — Very low</option>
+            <option value="2">2 — Low</option>
+            <option value="3" selected>3 — Neutral</option>
+            <option value="4">4 — Good</option>
+            <option value="5">5 — Very good</option>
+          </select>
+
+          <label for="mood-note">Optional fictional note</label>
+          <textarea id="mood-note" maxlength="500"
+            placeholder="Example: Finished a difficult assignment."></textarea>
+
+          <button id="save-mood">Save mood</button>
+          <p id="mood-status" role="status"></p>
+        </section>
+
+        <section class="card" id="report">
+          <h2>Mood report</h2>
+          <p>Your latest seven recorded check-ins.</p>
+          <div id="mood-report"></div>
+          <button class="secondary" id="clear-moods">Clear demo mood data</button>
+        </section>
+
+        <section class="card" id="chat">
+          <h2>Supportive chat</h2>
+          <div class="chatbox" id="chat-log" aria-live="polite"></div>
+
+          <label for="chat-message">Your message</label>
+          <textarea id="chat-message" maxlength="1000" required></textarea>
+
+          <button id="send-chat">Send</button>
+          <p id="chat-status" role="status"></p>
+        </section>
+
+        <section class="card" id="selfcare">
+          <h2>Self-care suggestion</h2>
+          <p id="suggestion"></p>
+          <button id="new-suggestion">Show another suggestion</button>
+        </section>
+
+        <section class="card" id="support">
+          <h2>Human support and privacy</h2>
+          <p>
+            For U.S. crisis support, call or text 988, or visit the 988
+            Lifeline. For immediate danger, contact emergency services.
+          </p>
+          <p>
+            Mood entries are stored in a local SQLite database. This demo
+            has one shared profile and no login. Chat messages are not
+            saved in our database.
+          </p>
+        </section>
+      </main>
+
+      <footer>CampusWell · Educational project · Fictional demo data</footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+  </body>
+</html>
